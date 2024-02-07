@@ -7,3 +7,5 @@ six >= 1.16.0
 ffmpeg-python
 mediapipe
 soundfile
+flask
+flask-ngrok
