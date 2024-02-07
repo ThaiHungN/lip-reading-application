@@ -1,0 +1,56 @@
+2024-02-07 21:59:26,193 WARNING werkzeug MainThread :  * Debugger is active!
+2024-02-07 21:59:26,200 INFO werkzeug MainThread :  * Debugger PIN: 125-944-827
+2024-02-07 21:59:54,527 INFO werkzeug MainThread :  * Detected change in 'D:\\study at vinuni\\final year\\computer vision\\project\\demo\\app.py', reloading
+2024-02-07 21:59:55,368 WARNING werkzeug MainThread :  * Debugger is active!
+2024-02-07 21:59:55,375 INFO werkzeug MainThread :  * Debugger PIN: 125-944-827
+2024-02-07 22:00:20,737 INFO app Thread-2 : Info level log
+2024-02-07 22:00:20,737 WARNING app Thread-2 : Warning level log
+2024-02-07 22:00:20,747 INFO werkzeug Thread-2 : 127.0.0.1 - - [07/Feb/2024 22:00:20] "GET / HTTP/1.1" 200 -
+2024-02-07 22:00:21,471 INFO werkzeug Thread-3 : 127.0.0.1 - - [07/Feb/2024 22:00:21] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+2024-02-07 22:00:21,471 INFO werkzeug Thread-4 : 127.0.0.1 - - [07/Feb/2024 22:00:21] "[36mGET /static/script.js HTTP/1.1[0m" 304 -
+2024-02-07 22:00:33,525 INFO werkzeug Thread-5 : 127.0.0.1 - - [07/Feb/2024 22:00:33] "POST /upload HTTP/1.1" 200 -
+2024-02-07 22:09:02,241 INFO werkzeug MainThread :  * Detected change in 'D:\\study at vinuni\\final year\\computer vision\\project\\demo\\app.py', reloading
+2024-02-07 22:09:03,778 WARNING werkzeug MainThread :  * Debugger is active!
+2024-02-07 22:09:03,786 INFO werkzeug MainThread :  * Debugger PIN: 125-944-827
+2024-02-07 22:09:15,243 INFO werkzeug MainThread :  * Detected change in 'D:\\study at vinuni\\final year\\computer vision\\project\\demo\\app.py', reloading
+2024-02-07 22:09:16,004 WARNING werkzeug MainThread :  * Debugger is active!
+2024-02-07 22:09:16,018 INFO werkzeug MainThread :  * Debugger PIN: 125-944-827
+2024-02-07 22:09:32,710 INFO app Thread-2 : Info level log
+2024-02-07 22:09:32,710 WARNING app Thread-2 : Warning level log
+2024-02-07 22:09:32,717 INFO werkzeug Thread-2 : 127.0.0.1 - - [07/Feb/2024 22:09:32] "GET / HTTP/1.1" 200 -
+2024-02-07 22:09:33,224 INFO werkzeug Thread-3 : 127.0.0.1 - - [07/Feb/2024 22:09:33] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+2024-02-07 22:09:33,226 INFO werkzeug Thread-4 : 127.0.0.1 - - [07/Feb/2024 22:09:33] "[36mGET /static/script.js HTTP/1.1[0m" 304 -
+2024-02-07 22:11:43,669 INFO app Thread-9 : Info level log
+2024-02-07 22:11:43,697 WARNING app Thread-9 : Warning level log
+2024-02-07 22:11:43,801 INFO werkzeug Thread-9 : 127.0.0.1 - - [07/Feb/2024 22:11:43] "GET / HTTP/1.1" 200 -
+2024-02-07 22:11:44,849 INFO werkzeug Thread-10 : 127.0.0.1 - - [07/Feb/2024 22:11:44] "[36mGET /static/script.js HTTP/1.1[0m" 304 -
+2024-02-07 22:11:44,853 INFO werkzeug Thread-11 : 127.0.0.1 - - [07/Feb/2024 22:11:44] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+2024-02-07 22:11:50,266 INFO werkzeug MainThread :  * Detected change in 'D:\\study at vinuni\\final year\\computer vision\\project\\demo\\app.py', reloading
+2024-02-07 22:11:54,535 WARNING werkzeug MainThread :  * Debugger is active!
+2024-02-07 22:11:54,606 INFO werkzeug MainThread :  * Debugger PIN: 125-944-827
+2024-02-07 22:12:00,963 INFO werkzeug MainThread :  * Detected change in 'D:\\study at vinuni\\final year\\computer vision\\project\\demo\\app.py', reloading
+2024-02-07 22:12:03,554 WARNING werkzeug MainThread :  * Debugger is active!
+2024-02-07 22:12:10,091 INFO werkzeug MainThread : [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2024-02-07 22:12:10,091 INFO werkzeug MainThread : [33mPress CTRL+C to quit[0m
+2024-02-07 22:12:10,098 INFO werkzeug MainThread :  * Restarting with stat
+2024-02-07 22:12:11,015 WARNING werkzeug MainThread :  * Debugger is active!
+2024-02-07 22:12:11,025 INFO werkzeug MainThread :  * Debugger PIN: 125-944-827
+2024-02-07 22:12:16,777 INFO app Thread-2 : Info level log
+2024-02-07 22:12:16,777 WARNING app Thread-2 : Warning level log
+2024-02-07 22:12:16,783 INFO werkzeug Thread-2 : 127.0.0.1 - - [07/Feb/2024 22:12:16] "GET / HTTP/1.1" 200 -
+2024-02-07 22:12:17,222 INFO werkzeug Thread-3 : 127.0.0.1 - - [07/Feb/2024 22:12:17] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+2024-02-07 22:12:17,241 INFO werkzeug Thread-4 : 127.0.0.1 - - [07/Feb/2024 22:12:17] "[36mGET /static/script.js HTTP/1.1[0m" 304 -
+2024-02-07 22:14:51,848 INFO werkzeug Thread-5 : 127.0.0.1 - - [07/Feb/2024 22:14:51] "POST /upload HTTP/1.1" 200 -
+2024-02-07 22:16:37,910 INFO werkzeug MainThread : [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2024-02-07 22:16:37,910 INFO werkzeug MainThread : [33mPress CTRL+C to quit[0m
+2024-02-07 22:16:37,912 INFO werkzeug MainThread :  * Restarting with stat
+2024-02-07 22:16:38,725 WARNING werkzeug MainThread :  * Debugger is active!
+2024-02-07 22:16:38,742 INFO werkzeug MainThread :  * Debugger PIN: 125-944-827
+2024-02-07 22:20:15,349 INFO app Thread-2 : Info level log
+2024-02-07 22:20:15,350 WARNING app Thread-2 : Warning level log
+2024-02-07 22:20:15,370 INFO werkzeug Thread-2 : 127.0.0.1 - - [07/Feb/2024 22:20:15] "GET / HTTP/1.1" 200 -
+2024-02-07 22:20:15,765 INFO werkzeug Thread-3 : 127.0.0.1 - - [07/Feb/2024 22:20:15] "[36mGET /static/script.js HTTP/1.1[0m" 304 -
+2024-02-07 22:20:15,765 INFO werkzeug Thread-4 : 127.0.0.1 - - [07/Feb/2024 22:20:15] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+2024-02-07 22:22:34,122 INFO werkzeug Thread-5 : 127.0.0.1 - - [07/Feb/2024 22:22:34] "POST /upload HTTP/1.1" 200 -

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <title>Your Website</title>
+</head>
+<body>
+    <div class="wrapper">
+        <h1>Welcome to Your Website</h1>
+
+        <form action="/upload" method="post" enctype="multipart/form-data">
+            <!-- Video Upload Button -->
+            <label for="video">Upload Video:</label>
+            <input type="file" id="video" name="video" accept="video/*">
+
+            <!-- Submit Button -->
+            <input type="submit" value="Submit">
+        </form>
+
+        <!-- Video Display Section -->
+        <div id="video-display">
+            <!-- Video will be displayed here -->
+        </div>
+    </div>
+    
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>

@@ -1,0 +1,26 @@
+body {
+    margin: 0;
+    overflow-x: hidden; /* Hide horizontal scrollbar */
+}
+
+.wrapper{
+    margin: 2rem;
+}
+
+#video-display {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    /* height: 100vh; Adjust as needed */
+    margin-top: 1rem;
+}
+
+video {
+    max-width: 50%; /* Set the maximum width to 40% of the body width */
+    height: auto;
+}
+
+#subtitle-display{
+    margin-top: 1rem;
+}
