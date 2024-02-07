@@ -64,4 +64,4 @@ def upload():
         return jsonify({'error': 'No video file provided'}), 400
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run()

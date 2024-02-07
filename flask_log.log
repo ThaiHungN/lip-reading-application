@@ -77,3 +77,7 @@
 2024-02-07 23:21:40,310 INFO werkzeug MainThread :  * Restarting with stat
 2024-02-07 23:21:43,251 WARNING werkzeug MainThread :  * Debugger is active!
 2024-02-07 23:21:43,325 INFO werkzeug MainThread :  * Debugger PIN: 144-262-953
+2024-02-08 00:02:05,780 INFO werkzeug MainThread :  * Detected change in 'D:\\study at vinuni\\final year\\computer vision\\project\\demo\\main.py', reloading
+2024-02-08 00:02:05,992 INFO werkzeug MainThread :  * Restarting with stat
+2024-02-08 00:02:09,245 WARNING werkzeug MainThread :  * Debugger is active!
+2024-02-08 00:02:09,277 INFO werkzeug MainThread :  * Debugger PIN: 144-262-953
