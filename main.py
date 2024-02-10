@@ -13,14 +13,14 @@ run_with_ngrok(app)
 
 logging.basicConfig(filename='flask_log.log', level=logging.DEBUG, format=f'%(asctime)s %(levelname)s %(name)s %(threadName)s : %(message)s')
 
-def execute_model_infer():
+def execute_model_infer(filename):
     try:
         print("debug 1")
         command = [
             "python", 
             "infer.py",
             "config_filename='configs/LRS3_V_WER32.3.ini'",
-            "data_filename='uploaded_video/processed_video.mp4'",
+            f"data_filename='uploaded_video/{filename}.mp4'",
             "detector=mediapipe"
         ]
         
@@ -67,6 +67,7 @@ def upload():
         frames = [
             ("00", "10"),
             ("10", "20"),
+            ("20", "30")
         ]
 
         for frame in frames:
@@ -85,13 +86,24 @@ def upload():
             .run(overwrite_output=True)
         )
         
+        subtitle_vtt_format = f"WEBVTT"
+
         # video -> subtitle_content
-        result = execute_model_infer()
+        for idx, frame in frames:
+            result = execute_model_infer(f"processed_video_{frame[0]}_{frame[1]}")
         
-        subtitle = result["result"].split("hyp: ")[1]
-        # print("debug 5", subtitle)
-        # Sample WebVTT content
-        subtitle_vtt_format = f"WEBVTT\n\n00:00.000 --> 00:10.000\n {subtitle}"
+            subtitle = result["result"].split("hyp: ")[1]
+
+            start = "0"
+            end = "0"
+            if idx*10 < 10:
+                start = f"0{idx * 10}"
+            else:
+                start = f"{idx * 10}"
+            
+            end = f"{(idx+1) * 10}"
+            subtitle_vtt_format += f"\n\n00:{start}.000 --> 00:{end}.000\n {subtitle}"
+
         print(subtitle_vtt_format)
 
         # Encode WebVTT content to base64
