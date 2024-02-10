@@ -15,6 +15,7 @@ logging.basicConfig(filename='flask_log.log', level=logging.DEBUG, format=f'%(as
 
 def execute_model_infer():
     try:
+        print("debug 1")
         command = [
             "python", 
             "infer.py",
@@ -24,8 +25,9 @@ def execute_model_infer():
         ]
         
         result = subprocess.run(command, capture_output=True, text=True, cwd = "Visual_Speech_Recognition_for_Multiple_Languages")
+        print("debug 2")
         print(result)
-
+        print("debug 3")
         return {"result": result.stdout, "error": None}
     
     except Exception as e:
@@ -67,8 +69,9 @@ def upload():
         
         # video -> subtitle_content
         result = execute_model_infer()
+        print("debug 4", result)
         subtitle = result.result.split("hyp: ")[1]
-
+        print("debug 5", subtitle)
         # Sample WebVTT content
         subtitle_vtt_format = f"WEBVTT\n\n00:00.000 --> 00:10.000\n {subtitle}"
         print(subtitle_vtt_format)
