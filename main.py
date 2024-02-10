@@ -69,7 +69,7 @@ def upload():
         
         # video -> subtitle_content
         result = execute_model_infer()
-        print("debug 4", result)
+        print("debug 4", result, result.result, result.result.split("hyp: "))
         subtitle = result.result.split("hyp: ")[1]
         print("debug 5", subtitle)
         # Sample WebVTT content
