@@ -15,7 +15,6 @@ logging.basicConfig(filename='flask_log.log', level=logging.DEBUG, format=f'%(as
 
 def execute_model_infer(filename):
     try:
-        print("debug 1")
         command = [
             "python", 
             "infer.py",
@@ -25,9 +24,7 @@ def execute_model_infer(filename):
         ]
         
         result = subprocess.run(command, capture_output=True, text=True, cwd = "Visual_Speech_Recognition_for_Multiple_Languages")
-        print("debug 2")
-        print(result)
-        print("debug 3")
+        
         return {"result": result.stdout, "error": None}
     
     except Exception as e:
@@ -35,7 +32,6 @@ def execute_model_infer(filename):
 
 async def process_video():
     command = shlex.split("ffmpeg -i 'uploaded_video/video.mp4' -ss 3 -t 11 -c copy uploaded_video/processed_video.mp4")
-    print("debug", command)
     
     await subprocess.run(command, capture_output=True, text=True, cwd = "Visual_Speech_Recognition_for_Multiple_Languages")
 
@@ -51,14 +47,14 @@ def upload():
     if 'video' in request.files:
         video_file = request.files['video']
         
-        # Save the uploaded video file to a folder (change as needed)
+        # Save the uploaded video file to a folder
         upload_folder = 'Visual_Speech_Recognition_for_Multiple_Languages/uploaded_video'
         os.makedirs(upload_folder, exist_ok=True)
         video_path = os.path.join(upload_folder, 'video.mp4')
         video_file.save(video_path)
 
-        duration = ffmpeg.probe("Visual_Speech_Recognition_for_Multiple_Languages/uploaded_video/video.mp4")["format"]["duration"]
-        print(duration)
+        # duration = ffmpeg.probe("Visual_Speech_Recognition_for_Multiple_Languages/uploaded_video/video.mp4")["format"]["duration"]
+        # print(duration)
 
         # asyncio.run(process_video())
         start_time = '00:00:00' # Start time for trimming (HH:MM:SS)
@@ -88,6 +84,7 @@ def upload():
         
         subtitle_vtt_format = f"WEBVTT"
 
+        print(f"{'-'*10} Start generating subtitle {'-'*10}")
         # video -> subtitle_content
         for idx, frame in enumerate(frames):
             result = execute_model_infer(f"processed_video_{frame[0]}_{frame[1]}")
@@ -104,7 +101,7 @@ def upload():
             end = f"{(idx+1) * 10}"
             subtitle_vtt_format += f"\n\n00:{start}.000 --> 00:{end}.000\n {subtitle}"
 
-        print(subtitle_vtt_format)
+        print(f"{'-'*10} Finish generating subtitles {'-'*10}")
 
         # Encode WebVTT content to base64
         subtitle_data = base64.b64encode(subtitle_vtt_format.encode('utf-8')).decode('utf-8')

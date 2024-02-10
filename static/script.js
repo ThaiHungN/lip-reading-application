@@ -24,7 +24,7 @@ document.addEventListener('DOMContentLoaded', function () {
         .then(data => {
             // Display the response from the backend (e.g., success message)
             // data = JSON.parse(data)
-            console.log(data);
+            // console.log(data);
 
             // Assuming the backend returns base64-encoded video data
             const videoElement = document.createElement('video');
