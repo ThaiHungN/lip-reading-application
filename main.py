@@ -103,6 +103,8 @@ def upload():
 
         print(f"{'-'*10} Finish generating subtitles {'-'*10}")
 
+        print(subtitle_vtt_format)
+
         # Encode WebVTT content to base64
         subtitle_data = base64.b64encode(subtitle_vtt_format.encode('utf-8')).decode('utf-8')
 
