@@ -1,10 +1,15 @@
 from flask import Flask, render_template, request, jsonify
+from flask_ngrok import run_with_ngrok
 import os
 import base64
 import subprocess
 import logging
+import asyncio
+import shlex
+import ffmpeg
 
 app = Flask(__name__)
+# run_with_ngrok(app)
 
 logging.basicConfig(filename='flask_log.log', level=logging.DEBUG, format=f'%(asctime)s %(levelname)s %(name)s %(threadName)s : %(message)s')
 
@@ -14,7 +19,7 @@ def execute_model_infer():
             "python", 
             "infer.py",
             "config_filename='configs/LRS3_V_WER32.3.ini'",
-            "data_filename='uploaded_video/uploaded_video.mp4'",
+            "data_filename='uploaded_video/processed_video.mp4'",
             "detector=mediapipe"
         ]
         
@@ -25,6 +30,12 @@ def execute_model_infer():
     
     except Exception as e:
         return {"result": None, "error": e}
+
+async def process_video():
+    command = shlex.split("ffmpeg -i 'uploaded_video/video.mp4' -ss 3 -t 11 -c copy uploaded_video/processed_video.mp4")
+    print("debug", command)
+    
+    await subprocess.run(command, capture_output=True, text=True, cwd = "Visual_Speech_Recognition_for_Multiple_Languages")
 
 
 @app.route('/')
@@ -41,8 +52,18 @@ def upload():
         # Save the uploaded video file to a folder (change as needed)
         upload_folder = 'Visual_Speech_Recognition_for_Multiple_Languages/uploaded_video'
         os.makedirs(upload_folder, exist_ok=True)
-        video_path = os.path.join(upload_folder, 'uploaded_video.mp4')
+        video_path = os.path.join(upload_folder, 'video.mp4')
         video_file.save(video_path)
+
+        # asyncio.run(process_video())
+        start_time = '00:00:00' # Start time for trimming (HH:MM:SS)
+        end_time = '00:00:10' # End time for trimming (HH:MM:SS)
+
+        (
+            ffmpeg.input("Visual_Speech_Recognition_for_Multiple_Languages/uploaded_video/video.mp4", ss=start_time, to=end_time)
+            .output("Visual_Speech_Recognition_for_Multiple_Languages/uploaded_video/processed_video.mp4")
+            .run(overwrite_output=True)
+        )
         
         # Read the video file and encode it in base64
         video_data = base64.b64encode(video_file.read()).decode('utf-8')
