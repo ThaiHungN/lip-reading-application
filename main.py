@@ -65,20 +65,24 @@ def upload():
             .run(overwrite_output=True)
         )
         
-        # Read the video file and encode it in base64
-        video_data = base64.b64encode(video_file.read()).decode('utf-8')
-        
         # video -> subtitle_content
         result = execute_model_infer()
+        subtitle = result.result.split("hyp: ")[1]
 
         # Sample WebVTT content
-        subtitle_content = "WEBVTT\n\n00:00.000 --> 00:10.000\n model: PROFOUND HEARING LOSSES ARE BOTH THINGS SO I UNDERSTAND THE DIFFICULTIES THAT THOSE OF US WITH HEARING LOSS AND FAITH\n real: I HAVE A PROFOUND HEARING LOSS IN BOTH EARS SO I UNDERSTAND THE DIFFICULTIES THAT THOSE OF US WITH A HEARING LOSS CAN FACE"
+        subtitle_vtt_format = f"WEBVTT\n\n00:00.000 --> 00:10.000\n {subtitle}"
+        print(subtitle_vtt_format)
 
         # Encode WebVTT content to base64
-        subtitle_data = base64.b64encode(subtitle_content.encode('utf-8')).decode('utf-8')
+        subtitle_data = base64.b64encode(subtitle_vtt_format.encode('utf-8')).decode('utf-8')
+
+        # Read the video file and encode it in base64
+        with open("Visual_Speech_Recognition_for_Multiple_Languages/uploaded_video/processed_video.mp4", 'rb') as f:
+            video_data = f.read()
+            video_base64 = base64.b64encode(video_data).decode()
 
         # Respond with the base64-encoded video data
-        return jsonify({'video_data': video_data, "subtitle_data": subtitle_data, "processed_video": result})
+        return jsonify({'video_data': video_base64, "subtitle_data": subtitle_data})
     else:
         return jsonify({'error': 'No video file provided'}), 400
 
