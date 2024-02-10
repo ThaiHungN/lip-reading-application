@@ -69,11 +69,11 @@ def upload():
         
         # video -> subtitle_content
         result = execute_model_infer()
-        print("debug 4", result)
-        print("debug 41", result.result)
-        print("debug 42", result.result.split("hyp: "))
-        subtitle = result.result.split("hyp: ")[1]
-        print("debug 5", subtitle)
+        # print("debug 4", result)
+        # print("debug 41", result.result)
+        # print("debug 42", result.result.split("hyp: "))
+        subtitle = result["result"].split("hyp: ")[1]
+        # print("debug 5", subtitle)
         # Sample WebVTT content
         subtitle_vtt_format = f"WEBVTT\n\n00:00.000 --> 00:10.000\n {subtitle}"
         print(subtitle_vtt_format)
