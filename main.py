@@ -89,7 +89,7 @@ def upload():
         subtitle_vtt_format = f"WEBVTT"
 
         # video -> subtitle_content
-        for idx, frame in frames:
+        for idx, frame in enumerate(frames):
             result = execute_model_infer(f"processed_video_{frame[0]}_{frame[1]}")
         
             subtitle = result["result"].split("hyp: ")[1]
