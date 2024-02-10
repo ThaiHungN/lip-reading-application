@@ -57,21 +57,37 @@ def upload():
         video_path = os.path.join(upload_folder, 'video.mp4')
         video_file.save(video_path)
 
+        duration = ffmpeg.probe("Visual_Speech_Recognition_for_Multiple_Languages/uploaded_video/video.mp4")["format"]["duration"]
+        print(duration)
+
         # asyncio.run(process_video())
         start_time = '00:00:00' # Start time for trimming (HH:MM:SS)
         end_time = '00:00:10' # End time for trimming (HH:MM:SS)
 
+        frames = [
+            ("00", "10"),
+            ("10", "20"),
+        ]
+
+        for frame in frames:
+            start_time = f"00:00:{frame[0]}"
+            end_time = f"00:00:{frame[1]}"
+            (
+                ffmpeg.input("Visual_Speech_Recognition_for_Multiple_Languages/uploaded_video/video.mp4", ss=start_time, to=end_time)
+                .output(f"Visual_Speech_Recognition_for_Multiple_Languages/uploaded_video/processed_video_{frame[0]}_{frame[1]}.mp4")
+                .run(overwrite_output=True)
+            )
+        
+        start_time = f"00:00:00"
         (
             ffmpeg.input("Visual_Speech_Recognition_for_Multiple_Languages/uploaded_video/video.mp4", ss=start_time, to=end_time)
-            .output("Visual_Speech_Recognition_for_Multiple_Languages/uploaded_video/processed_video.mp4")
+            .output(f"Visual_Speech_Recognition_for_Multiple_Languages/uploaded_video/processed_video.mp4")
             .run(overwrite_output=True)
         )
         
         # video -> subtitle_content
         result = execute_model_infer()
-        # print("debug 4", result)
-        # print("debug 41", result.result)
-        # print("debug 42", result.result.split("hyp: "))
+        
         subtitle = result["result"].split("hyp: ")[1]
         # print("debug 5", subtitle)
         # Sample WebVTT content
