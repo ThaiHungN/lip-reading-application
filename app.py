@@ -67,7 +67,7 @@ def upload():
         frames = [
             ("00", "10"),
             ("10", "20"),
-            ("10", "30")
+            ("20", "30")
         ]
 
         for frame in frames:
